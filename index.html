@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO and Meta Tags -->
+    <title>Ctrl+Ankit &bull;Portfolio Website</title>
+    <meta name="description" content="Portfolio of a world-class Full Stack Software Engineer specializing in interactive 3D Graphics and premium user experiences." />
+    
+    <!-- Google Analytics -->
+    <script>
+      (function() {
+        const gaId = "%VITE_GA_MEASUREMENT_ID%";
+        if (gaId && gaId.startsWith("G-") && !gaId.includes("%")) {
+          const script = document.createElement("script");
+          script.async = true;
+          script.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+          document.head.appendChild(script);
+
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function() { dataLayer.push(arguments); };
+          gtag('js', new Date());
+          gtag('config', gaId);
+        }
+      })();
+    </script>
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content=" Ctrl+Ankit | Elite Engineering Portfolio" />
+    <meta property="og:description" content="Discover premium applications, interactive WebGL visualizers, and state-of-the-art developer engineering." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-image.png" />
+    
+    <!-- Twitter Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ctrl+Ankit | Elite Engineering Portfolio" />
+    <meta name="twitter:description" content="Explore state-of-the-art interactive systems, AI tools, and full stack engineering." />
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100;200;300;400&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- PWA settings -->
+    <meta name="theme-color" content="#0a0a0c" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+  </head>
+  <body class="overflow-x-hidden antialiased selection:bg-accent-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

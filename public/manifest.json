@@ -1,0 +1,16 @@
+{
+  "short_name": "Ctrl+Ankit",
+  "name": "Ctrl+Ankit: High-Performance Developer Portfolio",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "display": "standalone",
+  "orientation": "portrait"
+}
