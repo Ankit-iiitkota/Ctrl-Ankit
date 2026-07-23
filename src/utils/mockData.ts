@@ -357,43 +357,42 @@ export type Testimonial = {
   quote: string
 }
 
-// Placeholder testimonials — swap in real quotes/names/roles when available
 export const testimonialsData: Testimonial[] = [
   {
     id: 'test1',
-    name: 'Aditya Verma',
-    role: 'Senior Developer, TechCorp',
-    quote: 'Ankit brings a rare mix of clean engineering and product sense. He turns ambiguous requirements into polished, working interfaces fast.'
+    name: 'Rajesh Kumar',
+    role: 'AI Engineer, Galaxy Automation AI',
+    quote: 'I’ve seen Ankit consistently approach complex problems with a practical mindset. His expertise in full-stack development and AI, combined with his dedication to learning, makes him a dependable engineer and an excellent teammate.'
   },
   {
     id: 'test2',
-    name: 'Priya Nair',
-    role: 'Engineering Manager, CloudScale',
-    quote: 'Working with Ankit on a tight deadline, his structured approach and calm communication made a complex integration feel straightforward.'
+    name: 'Yash Agrawal',
+    role: 'AI Engineer, Scaler AI Labs',
+    quote: 'Ankit has a strong foundation in AI and modern web technologies. His ability to build scalable solutions and quickly adapt to new challenges makes him stand out.'
   },
   {
     id: 'test3',
-    name: 'Rohan Mehta',
-    role: 'Tech Lead, Finlytics',
-    quote: 'His full-stack knowledge and attention to detail consistently raised the bar for our frontend quality across the team.'
+    name: 'Oregano',
+    role: 'B.Tech CSE, IIIT Guwahati',
+    quote: 'Ankit is someone who genuinely enjoys solving problems and learning new technologies. He’s easy to work with, contributes actively during discussions, and always looks for practical solutions instead of shortcuts.'
   },
   {
     id: 'test4',
-    name: 'Sanya Kapoor',
-    role: 'Product Designer, Northstar Labs',
-    quote: 'Ankit translates design intent into pixel-accurate, performant UI better than anyone I’ve collaborated with recently.'
+    name: 'Kashish Bhutia',
+    role: 'B.Tech CSE, IIIT Kota',
+    quote: 'I’ve worked with Ankit on multiple occasions, and one thing that stands out is his consistency. Whether it’s building projects, participating in hackathons, or helping teammates, he always puts in the effort and delivers quality work.'
   },
   {
     id: 'test5',
-    name: 'Karan Chopra',
-    role: 'Founder, Buildstack',
-    quote: 'Reliable, communicative, and genuinely invested in getting the details right — exactly who you want shipping production code.'
+    name: 'Amit Anand',
+    role: 'Software Development Engineer, Amazon',
+    quote: 'Ankit demonstrates strong problem-solving skills and a genuine curiosity for learning. His focus on clean implementation and continuous improvement will help him excel in software engineering.'
   },
   {
     id: 'test6',
-    name: 'Isha Malhotra',
-    role: 'Software Engineer II, Vertex Systems',
-    quote: 'Ankit’s debugging instincts and grasp of frontend architecture helped us untangle issues that had stalled for weeks.'
+    name: 'Raman Rai',
+    role: 'RTO College, Kota',
+    quote: 'Ankit is a disciplined and hardworking individual with excellent technical skills. His dedication toward projects and willingness to help others make him a valuable team member.'
   }
 ]
 

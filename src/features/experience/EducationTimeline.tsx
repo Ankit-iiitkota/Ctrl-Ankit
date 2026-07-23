@@ -93,24 +93,37 @@ export const EducationTimeline: React.FC = () => {
         >
           {educationData.map((edu, idx) => {
             const color = getAccent(idx, total)
-            const isBelow = idx % 2 === 1
+            const isBelow = idx % 2 === 0
             return (
               <div
                 key={`${edu.id}-above`}
-                className="flex items-end justify-center pb-10"
+                className="relative flex items-end justify-center pb-10"
                 style={{ gridColumn: idx + 1, gridRow: 1 }}
               >
                 {!isBelow && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -32, scale: 0.9, filter: 'blur(8px)' }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ y: -4 }}
-                    className="w-full max-w-sm"
-                  >
-                    <EducationCard edu={edu} color={color} />
-                  </motion.div>
+                  <>
+                    {/* Connector spanning the full gap from the card's bottom edge
+                        down to the spine (through this row's padding + half the
+                        node row), so there is no dead gap with no visible line. */}
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      whileInView={{ scaleY: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.35, delay: idx * 0.1 + 0.2, ease: 'easeOut' }}
+                      className="absolute left-1/2 bottom-0 -translate-x-1/2 w-px origin-bottom"
+                      style={{ height: '72px', background: `linear-gradient(to top, ${color}, transparent)` }}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: -32, scale: 0.9, filter: 'blur(8px)' }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ y: -4 }}
+                      className="w-full max-w-sm"
+                    >
+                      <EducationCard edu={edu} color={color} />
+                    </motion.div>
+                  </>
                 )}
               </div>
             )
@@ -130,23 +143,11 @@ export const EducationTimeline: React.FC = () => {
             <div className="relative z-10 grid w-full" style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}>
               {educationData.map((edu, idx) => {
                 const color = getAccent(idx, total)
-                const isBelow = idx % 2 === 1
                 return (
                   <div key={`${edu.id}-node`} className="relative flex items-center justify-center">
-                    {/* Short connector stub bridging the node to its card */}
-                    <motion.div
-                      initial={{ scaleY: 0, opacity: 0 }}
-                      whileInView={{ scaleY: 1, opacity: 1 }}
-                      viewport={{ once: true, margin: '-80px' }}
-                      transition={{ duration: 0.35, delay: idx * 0.1 + 0.2, ease: 'easeOut' }}
-                      className={`absolute left-1/2 -translate-x-1/2 w-px h-8 ${isBelow ? 'bottom-1/2 origin-bottom' : 'top-1/2 origin-top'}`}
-                      style={{
-                        background: isBelow
-                          ? `linear-gradient(to bottom, ${color}, transparent)`
-                          : `linear-gradient(to top, ${color}, transparent)`
-                      }}
-                    />
-
+                    {/* The connector from card to spine is drawn entirely within the
+                        card's own row (see the "-above"/"-below" cells) so it spans
+                        the full gap without a seam at this row's boundary. */}
                     <motion.span
                       initial={{ scale: 0, opacity: 0 }}
                       whileInView={{ scale: 1, opacity: 1 }}
@@ -165,24 +166,36 @@ export const EducationTimeline: React.FC = () => {
 
           {educationData.map((edu, idx) => {
             const color = getAccent(idx, total)
-            const isBelow = idx % 2 === 1
+            const isBelow = idx % 2 === 0
             return (
               <div
                 key={`${edu.id}-below`}
-                className="flex items-start justify-center pt-10"
+                className="relative flex items-start justify-center pt-10"
                 style={{ gridColumn: idx + 1, gridRow: 3 }}
               >
                 {isBelow && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 32, scale: 0.9, filter: 'blur(8px)' }}
-                    whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                    whileHover={{ y: 4 }}
-                    className="w-full max-w-sm"
-                  >
-                    <EducationCard edu={edu} color={color} />
-                  </motion.div>
+                  <>
+                    {/* Connector spanning the full gap from the spine down to the
+                        card's top edge (through half the node row + this row's padding). */}
+                    <motion.div
+                      initial={{ scaleY: 0, opacity: 0 }}
+                      whileInView={{ scaleY: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.35, delay: idx * 0.1 + 0.2, ease: 'easeOut' }}
+                      className="absolute left-1/2 top-0 -translate-x-1/2 w-px origin-top"
+                      style={{ height: '72px', background: `linear-gradient(to bottom, ${color}, transparent)` }}
+                    />
+                    <motion.div
+                      initial={{ opacity: 0, y: 32, scale: 0.9, filter: 'blur(8px)' }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                      whileHover={{ y: 4 }}
+                      className="w-full max-w-sm"
+                    >
+                      <EducationCard edu={edu} color={color} />
+                    </motion.div>
+                  </>
                 )}
               </div>
             )
