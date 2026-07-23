@@ -8,7 +8,7 @@ export const BlogList: React.FC = () => {
   return (
     <section
       id="blog"
-      className="relative w-full py-24 px-6 border-b border-white/5 bg-[#0a0a0c]"
+      className="relative w-full py-24 px-6 border-b border-white/5 bg-[var(--bg-primary)]"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}

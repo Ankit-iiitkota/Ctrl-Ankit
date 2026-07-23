@@ -34,7 +34,7 @@ export const AnalyticsDashboard: React.FC = () => {
   return (
     <section
       id="dashboard"
-      className="relative w-full py-24 px-6 border-b border-white/5 bg-[#0a0a0c] overflow-hidden"
+      className="relative w-full py-24 px-6 border-b border-white/5 bg-[var(--bg-primary)] overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}

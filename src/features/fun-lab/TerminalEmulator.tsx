@@ -92,7 +92,7 @@ export const TerminalEmulator: React.FC = () => {
   return (
     <section
       id="terminal"
-      className="relative w-full py-24 px-6 border-b border-white/5 bg-[#0a0a0c] text-[var(--text-primary)] font-matrix"
+      className="relative w-full py-24 px-6 border-b border-white/5 bg-[var(--bg-primary)] text-[var(--text-primary)] font-matrix"
     >
       <div className="max-w-4xl mx-auto flex flex-col">
         {/* Section header */}

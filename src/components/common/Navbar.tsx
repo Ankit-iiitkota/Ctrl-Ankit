@@ -51,8 +51,8 @@ export const Navbar: React.FC = () => {
       <nav
         className={`pointer-events-auto relative transition-all duration-500 rounded-2xl lg:rounded-full w-full max-w-6xl 2xl:max-w-[88rem] flex items-center justify-between px-4 sm:px-6 h-14 lg:h-16 border ${
           scrolled
-            ? 'bg-[#0c0c10]/90 backdrop-blur-xl border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)]'
-            : 'bg-[#0c0c10]/40 backdrop-blur-md border-white/5'
+            ? 'bg-[var(--bg-secondary)]/90 backdrop-blur-xl border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.3)]'
+            : 'bg-[var(--bg-secondary)]/40 backdrop-blur-md border-white/5'
         }`}
       >
         {/* Logo */}
@@ -120,7 +120,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden absolute top-full mt-2 left-4 right-4 pointer-events-auto rounded-2xl border border-white/10 py-5 px-5 shadow-2xl flex flex-col gap-2 animate-fade-in bg-[#0c0c10]/95 backdrop-blur-xl">
+        <div className="lg:hidden absolute top-full mt-2 left-4 right-4 pointer-events-auto rounded-2xl border border-white/10 py-5 px-5 shadow-2xl flex flex-col gap-2 animate-fade-in bg-[var(--bg-secondary)]/95 backdrop-blur-xl">
           {/* Nav links */}
           {navItems.map((item) => {
             const isActive = activeSection === item.id

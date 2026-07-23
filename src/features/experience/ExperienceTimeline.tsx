@@ -29,7 +29,7 @@ export const ExperienceTimeline: React.FC = () => {
             return (
               <div
                 key={exp.id}
-                className="rounded-2xl border border-white/10 bg-[#080b14]/90 backdrop-blur-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-all duration-500 hover:border-accent-500/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35),0_0_0_1px_hsl(var(--accent-hue)_85%_55%/0.3),0_0_35px_hsl(var(--accent-hue)_85%_55%/0.25)]"
+                className="rounded-2xl border border-white/10 bg-slate-950/90 backdrop-blur-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-all duration-500 hover:border-accent-500/60 hover:shadow-[0_20px_60px_rgba(0,0,0,0.35),0_0_0_1px_hsl(var(--accent-hue)_85%_55%/0.3),0_0_35px_hsl(var(--accent-hue)_85%_55%/0.25)]"
               >
                 {/* Terminal title bar */}
                 <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-white/[0.02]">
@@ -73,7 +73,7 @@ export const ExperienceTimeline: React.FC = () => {
                   </div>
 
                   {/* Description terminal block */}
-                  <div className="rounded-xl border border-white/5 bg-black/30 p-5 mb-6">
+                  <div className="rounded-xl border border-white/5 bg-slate-950/30 p-5 mb-6">
                     <p className="font-matrix text-xs text-accent-400 mb-3">
                       <span className="text-slate-600">$</span> cat description.md
                     </p>

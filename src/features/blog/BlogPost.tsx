@@ -35,7 +35,7 @@ export const BlogPost: React.FC = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0c] text-center px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bg-primary)] text-center px-6">
         <h2 className="text-xl font-bold font-display text-slate-200 mb-4">Article Not Found</h2>
         <Link to="/" className="text-xs text-accent-400 hover:underline">Return to Home Portal</Link>
       </div>
@@ -47,7 +47,7 @@ export const BlogPost: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-slate-100 py-28 px-6">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-slate-100 py-28 px-6">
       {/* Top Reading Progress Bar */}
       <div className="fixed top-0 left-0 right-0 h-1 bg-slate-900 z-[110]">
         <div

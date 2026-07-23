@@ -16,7 +16,7 @@ export const ResumeView: React.FC = () => {
   return (
     <section
       id="resume"
-      className="relative w-full py-24 px-6 border-b border-white/5 bg-[#0a0a0c] print:bg-white print:text-black print:py-6"
+      className="relative w-full py-24 px-6 border-b border-white/5 bg-[var(--bg-primary)] print:bg-white print:text-black print:py-6"
     >
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}

@@ -225,7 +225,7 @@ export const Chatbot: React.FC = () => {
               </div>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-hidden bg-[#0b1122]/95">
+            <div className="min-h-0 flex-1 overflow-hidden bg-slate-950/95">
               <div className="flex h-full flex-col px-4 py-4">
                 <div
                   ref={scrollContainerRef}

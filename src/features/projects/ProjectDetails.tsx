@@ -88,7 +88,7 @@ export const ProjectDetails: React.FC = () => {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0c] text-center px-6">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bg-primary)] text-center px-6">
         <h2 className="text-xl font-bold font-display text-slate-200 mb-4">Project Core Not Resolved</h2>
         <Link to="/home" className="text-xs text-accent-400 hover:underline">Return to Home Portal</Link>
       </div>
@@ -100,7 +100,7 @@ export const ProjectDetails: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0c] text-slate-100">
+    <div className="min-h-screen bg-[var(--bg-primary)] text-slate-100">
       {/* Cinematic hero: full-bleed cover image with gradient scrim and floating title/actions */}
       <div className="relative w-full h-[52vh] md:h-[64vh] min-h-[380px] overflow-hidden border-b border-white/5">
         {project.image ? (
