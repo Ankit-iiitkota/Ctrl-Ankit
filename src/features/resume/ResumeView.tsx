@@ -68,7 +68,7 @@ export const ResumeView: React.FC = () => {
 
             <div className="text-[11px] text-slate-400 print:text-slate-600 flex flex-col gap-1 font-matrix">
               <span>Phone: +91-7719538411</span>
-              <span>Email: ankitcloud005@gmail.com</span>
+              <span>Email: ankitiiitkota@gmail.com</span>
               <div className="flex gap-2.5">
                 <a href="https://linkedin.com/in/ankit-chaurasiya" target="_blank" rel="noreferrer" className="hover:text-accent-400 print:text-black">LinkedIn</a>
                 <span>&bull;</span>

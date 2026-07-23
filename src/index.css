@@ -592,3 +592,24 @@ a {
   animation: slideUpFade 0.55s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
+/* Testimonials marquee rows are driven by a single shared JS clock (see TestimonialsSection.tsx)
+   so both rows stay perfectly phase-locked instead of drifting apart as independent CSS animations. */
+.marquee-row-track {
+  will-change: transform;
+}
+
+/* Achievements spine cards: GSAP-driven rotateY tilt needs a perspective context on the
+   parent to read as 3D rather than a flat skew */
+.spine-track {
+  perspective: 1200px;
+}
+.spine-card {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-row-track {
+    transform: none !important;
+  }
+}
+

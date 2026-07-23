@@ -12,7 +12,7 @@ const NODE_COLORS = ['#22d3ee', '#34d399']
 function toAchievementLine(edu: (typeof educationData)[number]) {
   if (edu.result.toLowerCase().startsWith('cgpa')) {
     const value = edu.result.split(':')[1]?.trim() ?? edu.result
-    return `Maintained a CGPA of ${value}/10 throughout the program at ${edu.institution}.`
+    return `Maintained a CGPA of ${value}/10 throughout the program.`
   }
   return `Scored ${edu.result} in ${edu.level} board examinations at ${edu.institution}.`
 }
@@ -21,7 +21,7 @@ export const EducationTimeline: React.FC = () => {
   return (
     <section
       id="education"
-      className="relative w-full py-24 px-6 border-b border-white/5 overflow-hidden"
+      className="relative w-full py-24 px-6 border-b border-white/5"
     >
       <ConstellationBackground />
 
@@ -42,10 +42,10 @@ export const EducationTimeline: React.FC = () => {
           {educationData.map((edu, idx) => (
             <motion.div
               key={edu.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -20, scale: 0.9, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="relative group"
             >
               <span
@@ -60,9 +60,13 @@ export const EducationTimeline: React.FC = () => {
           ))}
         </div>
 
-        {/* Desktop: horizontal gradient spine, cards zigzagging above/below it left-to-right */}
-        <div className="hidden md:block relative py-44">
-          {/* Horizontal spine */}
+        {/* Desktop: horizontal gradient spine, cards zigzagging above/below it left-to-right.
+            Every column reserves an identical structure (260px card box + 64px node strip +
+            260px card box), with only one card box populated depending on isBelow. This keeps
+            the connector/node at an identical Y position across all columns regardless of how
+            tall any individual card is, so nothing overlaps or drifts off the shared spine. */}
+        <div className="hidden md:block relative pb-20">
+          {/* Horizontal spine, vertically centered on the grid */}
           <div className="absolute top-1/2 left-0 right-0 h-px -translate-y-1/2 bg-gradient-to-r from-cyan-500/60 via-emerald-500/60 to-fuchsia-500/60" />
 
           <div className="relative grid gap-8" style={{ gridTemplateColumns: `repeat(${educationData.length}, minmax(0, 1fr))` }}>
@@ -70,39 +74,74 @@ export const EducationTimeline: React.FC = () => {
               const color = NODE_COLORS[idx % 2]
               const isBelow = idx % 2 === 0
               return (
-                <div key={edu.id} className="relative h-0">
-                  {/* Node on the spine, centered in its column */}
-                  <span
-                    className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-slate-950 border-2"
-                    style={{ borderColor: color, boxShadow: `0 0 12px ${color}` }}
-                  >
-                    <span className="h-2 w-2 rounded-full animate-pulse" style={{ backgroundColor: color }} />
-                  </span>
+                <div key={edu.id} className="relative flex flex-col items-center">
+                  {/* Top half: reserved for the "above spine" card, pinned to the bottom
+                      of a fixed-height box so its card always sits flush against the
+                      connector regardless of the card's own height. */}
+                  <div className={`w-full flex flex-col justify-end ${isBelow ? 'h-0 overflow-hidden' : ''}`} style={isBelow ? undefined : { minHeight: '260px' }}>
+                    {!isBelow && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -40, scale: 0.85, filter: 'blur(10px)' }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full"
+                      >
+                        <EducationCard edu={edu} color={color} />
+                      </motion.div>
+                    )}
+                  </div>
 
-                  {/* Connector from node to card */}
-                  <motion.div
-                    initial={{ scaleY: 0, opacity: 0 }}
-                    whileInView={{ scaleY: 1, opacity: 1 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.4, delay: idx * 0.1, ease: 'easeOut' }}
-                    className={`absolute left-1/2 -translate-x-1/2 w-px h-8 ${isBelow ? 'top-0 origin-top' : 'bottom-0 origin-bottom'}`}
-                    style={{
-                      background: isBelow
-                        ? `linear-gradient(to bottom, ${color}80, transparent)`
-                        : `linear-gradient(to top, ${color}80, transparent)`
-                    }}
-                  />
+                  {/* Connector + node sit in a fixed-height strip so the shared spine
+                      line always passes exactly through the node's center. */}
+                  <div className="relative h-16 w-full flex items-center justify-center shrink-0">
+                    {!isBelow && (
+                      <motion.div
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.4, delay: idx * 0.1 + 0.15, ease: 'easeOut' }}
+                        className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-1/2 origin-bottom"
+                        style={{ background: `linear-gradient(to top, ${color}80, transparent)` }}
+                      />
+                    )}
+                    {isBelow && (
+                      <motion.div
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        whileInView={{ scaleY: 1, opacity: 1 }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.4, delay: idx * 0.1 + 0.15, ease: 'easeOut' }}
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-1/2 origin-top"
+                        style={{ background: `linear-gradient(to bottom, ${color}80, transparent)` }}
+                      />
+                    )}
 
-                  {/* Card, placed above or below the spine */}
-                  <motion.div
-                    initial={{ opacity: 0, y: isBelow ? 20 : -20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className={`absolute left-0 right-0 ${isBelow ? 'top-8' : 'bottom-8'}`}
-                  >
-                    <EducationCard edu={edu} color={color} />
-                  </motion.div>
+                    <motion.span
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true, margin: '-80px' }}
+                      transition={{ duration: 0.4, delay: idx * 0.1, ease: 'backOut' }}
+                      className="relative z-10 flex h-4 w-4 items-center justify-center rounded-full bg-slate-950 border-2"
+                      style={{ borderColor: color, boxShadow: `0 0 12px ${color}` }}
+                    >
+                      <span className="h-2 w-2 rounded-full animate-pulse" style={{ backgroundColor: color }} />
+                    </motion.span>
+                  </div>
+
+                  {/* Bottom half: mirror of the top half, reserved for the "below spine" card */}
+                  <div className={`w-full flex flex-col justify-start ${!isBelow ? 'h-0 overflow-hidden' : ''}`} style={!isBelow ? undefined : { minHeight: '260px' }}>
+                    {isBelow && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 40, scale: 0.85, filter: 'blur(10px)' }}
+                        whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                        viewport={{ once: true, margin: '-80px' }}
+                        transition={{ duration: 0.65, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full"
+                      >
+                        <EducationCard edu={edu} color={color} />
+                      </motion.div>
+                    )}
+                  </div>
                 </div>
               )
             })}

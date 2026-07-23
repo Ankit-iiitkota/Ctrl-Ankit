@@ -21,9 +21,13 @@ export interface Experience {
   role: string
   company: string
   period: string
+  from: string
+  to: string
+  duration: string
   location: string
   description: string[]
   tags: string[]
+  linkedProjectIds?: string[]
 }
 
 export interface EducationEntry {
@@ -96,7 +100,7 @@ export const projectsData: Project[] = [
     longDescription: 'AyurVision supports two workflows: patients upload health images for AI-powered analysis and receive detailed condition information, causes, and remedies based on Ayurvedic principles, while Ayurvedic specialists access a dashboard to review all patient reports alongside AI-generated insights. The platform combines a TensorFlow.js analysis pipeline with a full patient/specialist account system.',
     tags: ['React.js', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB', 'TensorFlow.js', 'OpenAI API'],
     category: 'Full Stack & AI/ML',
-    image: '',
+    image: '/ayurvison.png',
     github: 'https://github.com/Ankit-iiitkota/AyurVision',
     demo: '',
     timeline: '2025 - 2026',
@@ -127,7 +131,7 @@ export const projectsData: Project[] = [
     longDescription: 'An automated job-hunting agent for LinkedIn built on Selenium (undetected-chromedriver). It searches for roles matching configurable filters (experience level, work arrangement, date posted), excludes blacklisted companies or keywords, and completes Easy Apply multi-step forms automatically. An AI layer answers unknown application questions and rewords resume bullets to naturally surface job-description keywords without fabricating experience. A local Flask web UI tracks full application history.',
     tags: ['Python', 'Selenium', 'undetected-chromedriver', 'Flask', 'Groq', 'Gemini', 'OpenAI-compatible APIs', 'LaTeX (Tectonic)'],
     category: 'AI & ML',
-    image: '',
+    image: '/linkedin-auto-bot.png',
     github: 'https://github.com/Ankit-iiitkota/linkedin_auto_bot',
     demo: '',
     timeline: '2025 - 2026',
@@ -159,7 +163,7 @@ export const projectsData: Project[] = [
     longDescription: 'AI Job Finder automates the full job search loop: it parses a resume into structured data, scans free job APIs every 2 hours for matching openings, rewords resume bullets with job-description keywords (never fabricating experience) to generate ATS-optimized PDF resumes, and runs a free recruiter-email discovery pipeline (site scraping, pattern learning, DNS verification, confidence scoring). It then sends AI-drafted, personalized cold outreach emails through the user’s own Gmail (approval mode by default) with a 7-day automated follow-up ladder and reply detection, all tracked on a kanban-style dashboard.',
     tags: ['Next.js 16', 'TypeScript', 'Prisma', 'PostgreSQL', 'n8n', 'Groq LLM', 'Webhooks'],
     category: 'Full Stack & AI/ML',
-    image: '',
+    image: '/ai-job-finder.png',
     github: 'https://github.com/Ankit-iiitkota/job_finder',
     demo: '',
     timeline: '2025 - 2026',
@@ -191,7 +195,7 @@ export const projectsData: Project[] = [
     longDescription: 'VERA AI is a deterministic AI message engine built with Python and FastAPI that generates context-sensitive merchant engagement messages from structured merchant, category, trigger, and customer data. Rather than relying on unconstrained LLM generation, it runs requests through a 7-stage workflow — Feature Extraction, Signal Detection, Goal Inference, Candidate Ranking, and a Rule Engine — for deterministic, explainable AI decision-making, with response quality improved through rule-based ranking, template optimization, and a 5-dimensional evaluation framework across five business categories.',
     tags: ['Python', 'FastAPI', 'REST APIs', 'AI Workflows', 'Rule Engine', 'Docker'],
     category: 'AI & ML',
-    image: '',
+    image: '/vera-ai.png',
     github: 'https://github.com/Ankit-iiitkota/magicpin-vera-engine',
     demo: '',
     timeline: '2025 - 2026',
@@ -222,7 +226,7 @@ export const projectsData: Project[] = [
     longDescription: 'PixelSpark lets users generate imaginative images from text prompts using OpenAI’s DALL-E API and share them with a community showcase gallery. Users can browse and search the gallery by prompt text or creator name, post their generated images with metadata, and use a "Surprise Me" button for randomized creative prompts. Images are hosted via Cloudinary with MongoDB storing gallery metadata.',
     tags: ['React 18', 'Vite', 'React Router', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB', 'OpenAI API (DALL-E)', 'Cloudinary'],
     category: 'Full Stack & AI/ML',
-    image: '',
+    image: '/pixelSpark.png',
     github: 'https://github.com/Ankit-iiitkota/pixelSpark',
     demo: 'https://Ankit-iiitkota.github.io/pixelSpark/',
     timeline: '2025 - 2026',
@@ -254,6 +258,9 @@ export const experienceData: Experience[] = [
   role: 'Frontend Developer Intern',
   company: 'Intern Alpha',
   period: 'Jun 2025 - Aug 2025',
+  from: 'Jun 2025',
+  to: 'Aug 2025',
+  duration: '3m',
   location: 'Remote',
   description: [
     'Developed scalable and responsive user interfaces using React.js, JavaScript (ES6+), HTML5, and CSS3, improving application performance and code maintainability.',
@@ -318,7 +325,7 @@ export const achievementsData: Achievement[] = [
   category: 'Hackathon'
 },
   {
-    id: 'ach4',
+    id: 'ach4b',
     title: 'Smart India Hackathon Top Team',
     issuer: 'Smart India Hackathon (SIH)',
     date: '2024',
@@ -340,6 +347,53 @@ export const achievementsData: Achievement[] = [
     date: 'Active',
     description: 'Solved 300+ SQL problems across various platforms demonstrating strong database query and optimization abilities.',
     category: 'Award'
+  }
+]
+
+export type Testimonial = {
+  id: string
+  name: string
+  role: string
+  quote: string
+}
+
+// Placeholder testimonials — swap in real quotes/names/roles when available
+export const testimonialsData: Testimonial[] = [
+  {
+    id: 'test1',
+    name: 'Aditya Verma',
+    role: 'Senior Developer, TechCorp',
+    quote: 'Ankit brings a rare mix of clean engineering and product sense. He turns ambiguous requirements into polished, working interfaces fast.'
+  },
+  {
+    id: 'test2',
+    name: 'Priya Nair',
+    role: 'Engineering Manager, CloudScale',
+    quote: 'Working with Ankit on a tight deadline, his structured approach and calm communication made a complex integration feel straightforward.'
+  },
+  {
+    id: 'test3',
+    name: 'Rohan Mehta',
+    role: 'Tech Lead, Finlytics',
+    quote: 'His full-stack knowledge and attention to detail consistently raised the bar for our frontend quality across the team.'
+  },
+  {
+    id: 'test4',
+    name: 'Sanya Kapoor',
+    role: 'Product Designer, Northstar Labs',
+    quote: 'Ankit translates design intent into pixel-accurate, performant UI better than anyone I’ve collaborated with recently.'
+  },
+  {
+    id: 'test5',
+    name: 'Karan Chopra',
+    role: 'Founder, Buildstack',
+    quote: 'Reliable, communicative, and genuinely invested in getting the details right — exactly who you want shipping production code.'
+  },
+  {
+    id: 'test6',
+    name: 'Isha Malhotra',
+    role: 'Software Engineer II, Vertex Systems',
+    quote: 'Ankit’s debugging instincts and grasp of frontend architecture helped us untangle issues that had stalled for weeks.'
   }
 ]
 

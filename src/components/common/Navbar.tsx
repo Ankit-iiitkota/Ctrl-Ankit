@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Menu, X, Sun, Moon, Home, User, Briefcase, GraduationCap, Layers, Activity, Trophy, Mail } from 'lucide-react'
 import { usePortfolioStore } from '../../store/usePortfolioStore'
 import { ThemeToggle } from './ThemeToggle'
+import { MusicToggle } from './MusicToggle'
 import { useTheme } from '../../context/ThemeContext'
 
 const navItems = [
@@ -98,6 +99,7 @@ export const Navbar: React.FC = () => {
         {/* Desktop Utilities */}
         <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
           <div className="w-px h-4 bg-white/10 mx-1" />
+          <MusicToggle />
           <ThemeToggle />
         </div>
 
@@ -169,6 +171,19 @@ export const Navbar: React.FC = () => {
                 }`} />
               </div>
             </button>
+
+            {/* Music toggle row */}
+            <div className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-slate-900/40 border border-white/5">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-accent-500/10 text-accent-400">
+                  <MusicToggle />
+                </div>
+                <div className="text-left">
+                  <p className="text-xs font-semibold text-slate-200">Background Music</p>
+                  <p className="text-[10px] text-slate-500">Tap the icon to play/mute</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

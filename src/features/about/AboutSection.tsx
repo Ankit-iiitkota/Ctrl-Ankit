@@ -12,30 +12,47 @@ const AnimatedCounter: React.FC<{ value: number; suffix?: string; label: string;
     let animationFrameId: number
     let hasAnimated = false
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !hasAnimated) {
-          hasAnimated = true
-          const step = (timestamp: number) => {
-            if (!startTimestamp) startTimestamp = timestamp
-            const progress = Math.min((timestamp - startTimestamp) / 1500, 1) // 1.5s duration
-            setCount(Math.floor(progress * value))
-            if (progress < 1) {
-              animationFrameId = requestAnimationFrame(step)
-            }
-          }
+    const runCountUp = () => {
+      if (hasAnimated) return
+      hasAnimated = true
+      setCount(0)
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp
+        const progress = Math.min((timestamp - startTimestamp) / 1500, 1) // 1.5s duration
+        setCount(Math.floor(progress * value))
+        if (progress < 1) {
           animationFrameId = requestAnimationFrame(step)
         }
-      },
-      { threshold: 0.1 }
-    )
+      }
+      animationFrameId = requestAnimationFrame(step)
+    }
 
-    if (countRef.current) {
-      observer.observe(countRef.current)
+    const node = countRef.current
+    if (!node) return
+
+    // If the tile is already on-screen at mount (e.g. About sits above the fold
+    // right after the splash screen closes), the observer's initial callback
+    // fires before layout settles and can report isIntersecting on a stale
+    // rect — so we also eagerly check getBoundingClientRect as a fallback.
+    const rect = node.getBoundingClientRect()
+    const isAlreadyVisible = rect.top < window.innerHeight && rect.bottom > 0
+    if (isAlreadyVisible) {
+      runCountUp()
+    } else {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) runCountUp()
+        },
+        { threshold: 0.1 }
+      )
+      observer.observe(node)
+      return () => {
+        observer.disconnect()
+        cancelAnimationFrame(animationFrameId)
+      }
     }
 
     return () => {
-      observer.disconnect()
       cancelAnimationFrame(animationFrameId)
     }
   }, [value])

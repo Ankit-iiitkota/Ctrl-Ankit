@@ -35,8 +35,8 @@ const contactInfo = [
     icon: <Mail size={16} />,
     color: "#34d399",
     label: "Email",
-    value: "ankitcloud005@gmail.com",
-    href: "mailto:ankitcloud005@gmail.com",
+    value: "ankitiiitkota@gmail.com",
+    href: "mailto:ankitiiitkota@gmail.com",
   },
   {
     icon: <Linkedin size={16} />,

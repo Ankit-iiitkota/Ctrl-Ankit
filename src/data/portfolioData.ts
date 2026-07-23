@@ -14,7 +14,7 @@ export const portfolioKnowledgeBase: KnowledgeEntry[] = [
 College: Indian Institute of Information Technology, Kota (IIIT Kota)
 Degree: Bachelor of Technology in Computer Science and Engineering
 Location: India
-Email: ankitcloud005@gmail.com
+Email: ankitiiitkota@gmail.com
 LinkedIn: https://www.linkedin.com/in/ankitchaurasiya29/
 GitHub: https://github.com/Ankit-iiitkota
 Resume: Available as a downloadable PDF through the portfolio or via email request.`
@@ -113,7 +113,7 @@ Resume: Available as a downloadable PDF through the portfolio or via email reque
     id: 'contact-information',
     title: 'Contact Information',
     category: 'Contact Information',
-    content: `Contact via email: ankitcloud005@gmail.com. LinkedIn: https://www.linkedin.com/in/ankitchaurasiya29/. GitHub: https://github.com/Ankit-iiitkota.`
+    content: `Contact via email: ankitiiitkota@gmail.com. LinkedIn: https://www.linkedin.com/in/ankitchaurasiya29/. GitHub: https://github.com/Ankit-iiitkota.`
   }
 ]
 

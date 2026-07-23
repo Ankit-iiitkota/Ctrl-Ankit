@@ -118,10 +118,10 @@ export const LeadershipCerts: React.FC = () => {
           {/* Sticky intro panel */}
           <div className="w-full shrink-0 lg:sticky lg:top-32 lg:w-1/3">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -30, scale: 0.92, filter: 'blur(8px)' }}
+              whileInView={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.7, ease: 'easeOut' }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="relative overflow-hidden rounded-[2rem] border border-white/10 glassmorphism p-6 shadow-[0_0_40px_hsl(var(--accent-hue)_85%_55%/0.08)]"
             >
               <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-accent-500/10 blur-3xl" />
@@ -157,16 +157,22 @@ export const LeadershipCerts: React.FC = () => {
               {leadershipRoles.map((role, index) => (
                 <motion.li
                   key={role.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: 40, scale: 0.9, filter: 'blur(10px)' }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
                   viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  transition={{ duration: 0.65, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                   className="relative pl-[52px] sm:pl-[70px]"
                 >
                   {/* Node */}
-                  <span className="absolute left-[24px] top-2 -translate-x-1/2 flex h-5 w-5 items-center justify-center rounded-full bg-slate-950 border-2 border-accent-500 shadow-[0_0_12px_hsl(var(--accent-hue)_85%_55%/0.5)] sm:left-[36px]">
+                  <motion.span
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: '-60px' }}
+                    transition={{ duration: 0.4, delay: index * 0.1 + 0.15, ease: 'backOut' }}
+                    className="absolute left-[24px] top-2 -translate-x-1/2 flex h-5 w-5 items-center justify-center rounded-full bg-slate-950 border-2 border-accent-500 shadow-[0_0_12px_hsl(var(--accent-hue)_85%_55%/0.5)] sm:left-[36px]"
+                  >
                     <span className="h-2.5 w-2.5 rounded-full bg-accent-500 animate-pulse" />
-                  </span>
+                  </motion.span>
 
                   <div className="bg-slate-950/20 glassmorphism p-6 md:p-7 rounded-2xl border border-white/5 hover:border-accent-500/30 transition-all duration-300 group">
                     <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-start md:justify-between">

@@ -22,6 +22,7 @@ import { AchievementsSection } from './features/achievements/AchievementsSection
 import { ProjectsScroll } from './features/projects/ProjectsScroll'
 import { LeadershipCerts } from './features/leadership-certs/LeadershipCerts'
 import { ContactForm } from './features/contact/ContactForm'
+import { TestimonialsSection } from './features/testimonials/TestimonialsSection'
 
 // Deep link views
 import { ProjectDetails } from './features/projects/ProjectDetails'
@@ -99,6 +100,7 @@ const MainPortalView: React.FC = () => {
       <AchievementsSection />
       <ProjectsScroll />
       <LeadershipCerts />
+      <TestimonialsSection />
       <ContactForm />
       <Footer />
     </div>
