@@ -309,9 +309,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
         >
           <Canvas
             camera={{ position: [0, 0, 100], fov: 65, near: 1, far: 10000 }}
-            gl={{ antialias: true, alpha: false }}
+            gl={{ antialias: true, alpha: false, powerPreference: 'default' }}
             onCreated={({ gl }) => {
               gl.setClearColor(0x000000, 1)
+              // The splash mounts once per page load and is discarded immediately after —
+              // ignore GPU-level context-loss events here instead of letting Three.js log
+              // a warning for a canvas that's about to be torn down anyway.
+              gl.domElement.addEventListener('webglcontextlost', (e) => e.preventDefault())
             }}
           >
             <ParticleScene expandRef={expandRef} />

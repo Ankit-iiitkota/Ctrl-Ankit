@@ -207,7 +207,7 @@ const AppShell: React.FC = () => {
       <FluidBackground theme={resolvedTheme} />
       <CustomCursor />
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <AppAnalyticsWrapper>
           <AppContent />
         </AppAnalyticsWrapper>

@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
           className="flex items-center gap-2 cursor-pointer select-none group shrink-0"
           data-cursor="HOME"
         >
-          <div className="relative w-8 h-8 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+          <div className="relative w-12 h-12 flex items-center justify-center group-hover:scale-110 transition-all duration-300">
             <img
               src="/logo.png"
               alt="Ankit Chaurasiya logo"
